@@ -19,3 +19,18 @@ services:
       - PGADMIN_DEFAULT_PASSWORD=lek1234
     depends_on:
       - db
+
+  app:
+    image: prawee/strapi
+    container_name: 69-s3-app
+    ports:
+      - 8080:1337
+    environment:
+      - DATABASE_CLIENT=postgres
+      - DATABASE_NAME=pornlert
+      - DATABASE_HOST=db
+      - DATABASE_PORT=5432
+      - DATABASE_USERNAME=pornlert
+      - DATABASE_PASSWORD=lek1234
+    depends_on:
+      - db
