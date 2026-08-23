@@ -1,7 +1,6 @@
 # REST
 
 ### Login
-# @name login
 POST http://localhost:9093/admin/login
 Content-Type: application/json
 
@@ -11,19 +10,28 @@ Content-Type: application/json
   "rememberMe": true
 }
 
-### Signup
-POST http://localhost:9093/admin/register-admin
+### Login (User)
+# @name loginUser
+POST http://localhost:9093/api/auth/local
 Content-Type: application/json
 
 {
+  "identifier": "",
+  "password": ""
+}
+
+### Signup
+POST http://localhost:9093/api/auth/local/register
+Content-Type: application/json
+
+{
+  "username": "",
   "email": "",
-  "firstname": "",
-  "lastname": "",
   "password": ""
 }
 
 ### Forgot Password
-POST http://localhost:9093/admin/forgot-password
+POST http://localhost:9093/api/auth/forgot-password
 Content-Type: application/json
 
 {
@@ -31,5 +39,5 @@ Content-Type: application/json
 }
 
 ### Profile
-GET http://localhost:9093/admin/users/me
-Authorization: Bearer {{login.response.body.data.token}}
+GET http://localhost:9093/api/users/me
+Authorization: Bearer {{loginUser.response.body.jwt}}
