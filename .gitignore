@@ -1,2 +1,5 @@
 .env
 data/
+api.rest
+pgadmin_data/
+_backup-*/
